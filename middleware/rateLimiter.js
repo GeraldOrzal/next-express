@@ -6,7 +6,7 @@ const opts = {
     dbName: process.env.DB_NAME,
     tableName: 'limiters', // all limiters store data in one table
     points: 10, // Number of points
-    duration: 1, // Per second(s)
+    duration: 0, // Per second(s)
 };
 const ready = (err) => {
     if (err) {
