@@ -5,7 +5,7 @@ const opts = {
     storeClient: connection,
     dbName: process.env.DB_NAME,
     tableName: 'limiters', // all limiters store data in one table
-    points: 5, // Number of points
+    points: 10, // Number of points
     duration: 1, // Per second(s)
 };
 const ready = (err) => {
@@ -22,7 +22,8 @@ const rateLimiterMiddleware = (req, res, next) => {
     .then(() => {
       next();
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err);
       res.status(429).send('Too Many Requests');
     });
 };
