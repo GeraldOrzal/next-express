@@ -7,7 +7,9 @@ module.exports ={
                 return;
             }
             cb(null,res);
+            
         });
+
     },
     getUserByUsername:(username,cb)=>{
         db.query('SELECT * FROM users WHERE username = ?',[username],(err,res)=>{
