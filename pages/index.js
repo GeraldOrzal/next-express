@@ -1,18 +1,29 @@
 import Link from 'next/link'
 
-export default function Home() {
-  return (
-    <ul>
-      <li>
-        <Link href="/b" as="/a">
-          <a>a</a>
-        </Link>
-      </li>
-      <li>
-        <Link href="/a" as="/b">
-          <a>b</a>
-        </Link>
-      </li>
-    </ul>
-  )
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      isAuth: context.req.isAuthenticated()
+    }, // will be passed to the page component as props
+  }
+}
+export default function Home({ isAuth }) {
+  return isAuth ? (<>
+
+  </>) : (<><ul>
+    <li>
+      <Link href="/login" as="/login">
+        <a>Login</a>
+      </Link>
+    </li>
+    <li>
+      <Link href="/register" as="/register">
+        <a>Register</a>
+      </Link>
+    </li>
+  </ul>
+  </>)
+
+
+
 }
