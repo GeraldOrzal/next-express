@@ -1,10 +1,10 @@
 import React from 'react'
 
-export default function Button(props) {
+export default function button({children,onclick}) {
   return (
-    props.as=="FORM"?
-    <form method={props.method} action={props.action} onSubmit={props.onSubmit}>
-        <button type='submit' className={props.className}>{props.children}</button>
-    </form>:<button>{props.children}</button>
+    <button
+        onClick={onclick}
+        className='bg-primary border p-2 rounded hover:bg-indigo-500'
+    >{children}</button>
   )
 }
